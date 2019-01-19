@@ -1,0 +1,23 @@
+#service: kuasa-search
+runtime: go111
+handlers:
+
+  # Use HTTPS for all requests.
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
+  - url: /robots.txt
+    static_files: media/robots.txt
+    upload: media/robots.txt
+  - url: /favicon.ico
+    static_files: media/favicon.ico
+    upload: media/favicon.ico
+
+env_variables:
+  gae_search_index_name: KuasaSearch
+  gcp_project_id: kuasa-search
+  storage_bucket: kuasa-article
+  azure_storage_account: pvmaxsgkuasasearch
+  azure_storage_access_key: aW2XgOOJHoAFVJ/sHXeGdMajezDPbcbFWx+TSftbieepKWByPgNuZUQjv/4VAAnOlRJLRQ5wSyXhXlsmXyngRw==
+  azure_container: items
